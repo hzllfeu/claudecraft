@@ -1,0 +1,13 @@
+{
+  "host": "mc.example.com",
+  "user": "ubuntu",
+  "sshKey": "~/.ssh/id_ed25519",
+  "remotePort": 25580,
+  "localPort": 25581,
+  "token": "paste the token given by /claude link",
+  "claudePath": "claude",
+  "defaultCwd": "~",
+  "promptPrefix": "[Message sent from Minecraft chat: reply in plain, concise text, without tables or long code blocks.]",
+  "permTimeoutSec": 180,
+  "keepAwake": true
+}

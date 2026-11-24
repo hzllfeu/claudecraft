@@ -1,0 +1,25 @@
+{
+  "name": "claudecraft-bridge",
+  "version": "0.1.0",
+  "description": "Runs on your machine and connects your local Claude Code CLI to the ClaudeCraft Minecraft mod.",
+  "license": "MIT",
+  "type": "module",
+  "private": true,
+  "bin": {
+    "claudecraft-bridge": "bridge.mjs"
+  },
+  "scripts": {
+    "start": "node bridge.mjs",
+    "test": "node --test",
+    "check": "node --check bridge.mjs && node --check perm-mcp.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "bridge.mjs",
+    "perm-mcp.mjs",
+    "lib/",
+    "config.example.json"
+  ]
+}

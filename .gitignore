@@ -1,0 +1,26 @@
+# --- bridge: personal config, runtime state and logs (never commit: the config holds your token)
+bridge/config.json
+bridge/config.*.json
+!bridge/config.example.json
+bridge/*.state.json
+bridge/state.json
+bridge/*.log
+bridge/*.plist
+node_modules/
+
+# --- build outputs (attach jars to GitHub releases instead)
+dist/
+mod/build/
+mod/.gradle/
+mod/run/
+
+# --- local, not part of the project
+backups/
+client-install/
+notes/
+
+# --- OS / editors
+.DS_Store
+.idea/
+.vscode/
+*.iml

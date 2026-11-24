@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "claudecraft",
+	"version": "${version}",
+	"name": "ClaudeCraft",
+	"description": "Use your own Claude Code CLI (running on your machine) from inside Minecraft: several conversations, live streaming, permission prompts, plan usage. Install on the server; install on the client too for the full ClaudeCraft screen (otherwise everything works through chat).",
+	"authors": [
+		"hzllfeu"
+	],
+	"contact": {
+		"homepage": "https://github.com/hzllfeu/claudecraft",
+		"sources": "https://github.com/hzllfeu/claudecraft",
+		"issues": "https://github.com/hzllfeu/claudecraft/issues"
+	},
+	"license": "MIT",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"io.github.hzllfeu.claudecraft.ClaudeCraft"
+		],
+		"client": [
+			"io.github.hzllfeu.claudecraft.client.ClaudeCraftClient"
+		]
+	},
+	"mixins": [
+		{
+			"config": "claudecraft.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.20.1",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

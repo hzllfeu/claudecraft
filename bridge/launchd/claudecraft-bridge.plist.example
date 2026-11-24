@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  macOS: keep the bridge running in the background and restart it at login.
+    1. Replace every /PATH/TO/... and /Users/YOU below.
+    2. cp claudecraft-bridge.plist.example ~/Library/LaunchAgents/claudecraft-bridge.plist
+    3. launchctl load ~/Library/LaunchAgents/claudecraft-bridge.plist
+  Restart after an update: launchctl kickstart -k gui/$(id -u)/claudecraft-bridge
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>claudecraft-bridge</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/PATH/TO/node</string>
+		<string>/PATH/TO/claudecraft/bridge/bridge.mjs</string>
+	</array>
+	<key>WorkingDirectory</key>
+	<string>/PATH/TO/claudecraft/bridge</string>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<!-- must contain the folders of `node` and `claude` -->
+		<key>PATH</key>
+		<string>/Users/YOU/.local/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+	</dict>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>KeepAlive</key>
+	<true/>
+	<key>ThrottleInterval</key>
+	<integer>10</integer>
+	<key>StandardOutPath</key>
+	<string>/PATH/TO/claudecraft/bridge/bridge.log</string>
+	<key>StandardErrorPath</key>
+	<string>/PATH/TO/claudecraft/bridge/bridge.log</string>
+</dict>
+</plist>

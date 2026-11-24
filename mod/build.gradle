@@ -1,0 +1,58 @@
+plugins {
+	id 'net.fabricmc.fabric-loom-remap' version "${loom_version}"
+}
+
+base {
+	archivesName = 'claudecraft'
+}
+
+loom {
+	splitEnvironmentSourceSets()
+
+	runs {
+		client {
+			programArgs '--username', 'ClaudeDemo', '--width', '1600', '--height', '900'
+			// ./gradlew runClient -Pautoshot : scripted screenshots, see DemoDriver
+			if (project.hasProperty('autoshot')) vmArg '-Dclaudecraft.autoshot=true'
+		}
+	}
+
+	mods {
+		claudecraft {
+			sourceSet sourceSets.main
+			sourceSet sourceSets.client
+		}
+	}
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${minecraft_version}"
+	mappings loom.officialMojangMappings()
+	modImplementation "net.fabricmc:fabric-loader:${loader_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
+}
+
+processResources {
+	def version = project.version
+	inputs.property 'version', version
+	filesMatching('fabric.mod.json') {
+		expand 'version': version
+	}
+}
+
+java {
+	withSourcesJar()
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
+}
+
+tasks.withType(JavaCompile).configureEach {
+	options.release = 21
+	options.encoding = 'UTF-8'
+}
+
+jar {
+	from(rootProject.file('../LICENSE')) {
+		rename { 'LICENSE_claudecraft' }
+	}
+}
