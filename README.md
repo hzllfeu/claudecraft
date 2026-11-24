@@ -141,6 +141,8 @@ bridge/              Node.js bridge, no dependencies
   test/              unit tests (node --test)
 ```
 
+Building needs JDK 25 or later (required by Fabric Loom); the mod itself targets Java 21.
+
 ```bash
 cd mod && ./gradlew build        # mod/build/libs/claudecraft-<version>.jar
 cd mod && ./gradlew runClient    # development client; singleplayer also runs the server side
